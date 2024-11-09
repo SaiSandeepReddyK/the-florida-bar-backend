@@ -5,9 +5,14 @@ const cors = require('cors');
 
 const app = express();
 const port = process.env.PORT;
-
+/*
 app.use(cors({
     origin: 'http://localhost:3000'
+}));
+*/
+
+app.use(cors({
+    origin: 'https://the-florida-bar-backend.vercel.app'
 }));
 
 const instance = axios.create({
