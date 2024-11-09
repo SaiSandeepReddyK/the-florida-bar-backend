@@ -4,16 +4,13 @@ const cheerio = require('cheerio');
 const cors = require('cors');
 
 const app = express();
-const port = process.env.PORT | 4000;
-/*
-app.use(cors({
-    origin: 'http://localhost:3000'
-}));
-*/
+const port = process.env.PORT || 4000;
+
+// Allow CORS from the specific frontend domain
 const allowedOrigins = ['https://the-florida-bar-frontend.vercel.app'];
 const corsOptions = {
     origin: (origin, callback) => {
-        if (allowedOrigins.includes(origin) || !origin) {
+        if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
             callback(new Error('Not allowed by CORS'));
@@ -21,7 +18,9 @@ const corsOptions = {
     },
 };
 
+// Use CORS middleware
 app.use(cors(corsOptions));
+app.use(express.json());
 
 const instance = axios.create({
     baseURL: 'https://www.floridabar.org',
