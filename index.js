@@ -7,7 +7,7 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 // Allow CORS from the specific frontend domain
-const allowedOrigins = ['https://the-florida-bar-frontend.vercel.app'];
+const allowedOrigins = ['https://the-florida-bar-frontend.vercel.app', 'https://the-florida-bar-frontend-sai-sandeep-ks-projects.vercel.app'];
 const corsOptions = {
     origin: (origin, callback) => {
         if (!origin || allowedOrigins.includes(origin)) {
